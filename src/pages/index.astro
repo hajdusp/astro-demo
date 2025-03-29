@@ -1,11 +1,40 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Main from "../layouts/Main.astro";
+import profile from "../assets/profile.webp";
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<Main>
+	<div class="profile">
+		<img src={profile.src} alt="Profile Picture" class="profile__image" />
+
+		<div class="profile__details">
+			<h1>Frau Katerina</h1>
+			<h2>Senior VP angineer at Googleees</h2>
+			<p>
+				Welcome to my website! I am a software engineer and I love to
+				learn new technologies. This is my first Astro project, and I am
+				excited to share it with you.
+			</p>
+		</div>
+	</div>
+</Main>
+
+<style>
+	.profile {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.profile__image {
+		width: 100px;
+		height: 100px;
+		border-radius: 50%;
+		object-fit: cover;
+		flex-shrink: 0;
+	}
+
+	h2 {
+		font-weight: normal;
+	}
+</style>
