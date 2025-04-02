@@ -48,13 +48,22 @@
 </style>
 
 <script>
+    // Sanyi: recap this theme-switching functionality
     const DARK_THEME_CLASS = "dark";
-    const themeToggle = document.getElementById("theme-toggle");
-    const rootElement = document.documentElement;
+    const COLOUR_MODE = "COLUR_MODE";
+    const LIGHT_THEME = "LIGHT_THEME";
+    const DARK_THEME = "DARK_THEME";
 
-    if (themeToggle) {
-        themeToggle.addEventListener("click", () => {
-            rootElement.classList.toggle(DARK_THEME_CLASS);
+    const toggle = document.querySelector("#theme-toggle");
+    const rootEl = document.documentElement;
+
+    if (toggle) {
+        toggle.addEventListener("click", () => {
+            rootEl.classList.toggle(DARK_THEME_CLASS);
+            const colourMode = rootEl.classList.contains(DARK_THEME_CLASS)
+                ? DARK_THEME
+                : LIGHT_THEME;
+            localStorage.setItem(COLOUR_MODE, colourMode);
         });
     }
 </script>

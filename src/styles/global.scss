@@ -1,8 +1,50 @@
 @use "reset";
 
-main {
-    max-width: 40rem;
-    margin: auto;
+// Sass variables (used at compile time, not available in the final CSS)
+$color-dark: #222222;
+$color-light: #ffffff;
+$color-primary: #444444;
+
+// CSS variables (available at runtime, derived from Sass variables)
+html {
+    --background: #{$color-light};
+    --heading: #{$color-dark};
+    --text: #{$color-primary};
+    background-color: var(--background);
+    transition: background-color 0.3s ease;
+}
+
+html.dark {
+    --background: #{$color-dark};
+    --heading: #{$color-light};
+    --text: #{$color-light};
+    background-color: var(--background);
+}
+
+
+body {
+    color: var(--text);
+}
+
+// Also add transitions to other elements that change color
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    transition: color 0.3s ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--heading);
+    font-weight: 600;
 }
 
 h1 {
@@ -13,4 +55,9 @@ h1 {
 
 h1+h2 {
     margin-top: -1rem;
+}
+
+main {
+    max-width: 40rem;
+    margin: auto;
 }

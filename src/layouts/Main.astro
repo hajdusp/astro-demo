@@ -12,12 +12,53 @@ import "../styles/global.scss";
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="description" content="Frau Katerina's website" />
         <title>Astro Basics</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-            rel="stylesheet"
-        />
+        <script is:inline>
+            // Immediately set the theme class based on local storage or system preference
+            const storedTheme = localStorage.getItem("theme");
+            if (storedTheme) {
+                document.documentElement.classList.add(storedTheme);
+            } else if (
+                window.matchMedia("(prefers-color-scheme: dark)").matches
+            ) {
+                document.documentElement.classList.add("dark");
+            }
+
+            const DARK_THEME_CLASS = "dark";
+            const COLOUR_MODE = "COLUR_MODE";
+            const LIGHT_THEME = "LIGHT_THEME";
+            const DARK_THEME = "DARK_THEME";
+
+            const rootEl = document.documentElement;
+
+            const getinitialColourMode = () => {
+                const previousColourMode = localStorage.getItem(COLOUR_MODE);
+
+                if (previousColourMode) {
+                    return previousColourMode;
+                }
+
+                if (
+                    window.matchMedia &&
+                    window.matchMedia("(prefers-color-scheme: dark)").matches
+                ) {
+                    return DARK_THEME;
+                }
+
+                return LIGHT_THEME;
+            };
+
+            const initialColourMode = getinitialColourMode();
+
+            const setInitialColourMode = (mode) => {
+                if (mode === LIGHT_THEME) {
+                    rootEl.classList.remove(DARK_THEME_CLASS);
+                } else {
+                    rootEl.classList.add(DARK_THEME_CLASS);
+                }
+            };
+
+            setInitialColourMode(initialColourMode);
+        </script>
     </head>
     <body>
         <main>
