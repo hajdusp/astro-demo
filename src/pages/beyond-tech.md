@@ -1,5 +1,8 @@
 ---
-layout: ../layouts/Main.astro
+layout: ../layouts/Blog.astro
+title: "Beyond Tech"
+subtitle: "Beyond Tech subtitle..."
+poster: "/images/image1.png"
 ---
 
 - Participate in the sensor community

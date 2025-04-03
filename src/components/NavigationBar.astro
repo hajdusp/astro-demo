@@ -14,34 +14,46 @@ import ThemeToggler from "./ThemeToggler.astro";
             <a href="/beyond-tech">Tehnlogies</a>
         </li>
     </ul>
-    <ThemeToggler < nav>
-        <style>
-            nav {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                height: 100px;
-                font-size: 0.88rem;
-                font-weight: 500;
-            }
-
-            ul {
-                list-style-type: none;
-                padding: 0;
-            }
-
-            li {
-                display: inline-block;
-                margin-right: 20px;
-            }
-
-            a {
-                text-decoration: none;
-                color: var(--text-color);
-            }
-            a:hover {
-                text-decoration: underline;
-            }
-        </style>
-    </ThemeToggler>
+    <ThemeToggler />
 </nav>
+
+<style>
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100px;
+        font-size: 0.88rem;
+        font-weight: 500;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    li {
+        display: inline-block;
+        margin-right: 20px;
+    }
+
+    a {
+        text-decoration: none;
+        color: var(--text-color);
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+    a.active {
+        text-decoration: underline;
+    }
+</style>
+
+<script>
+    const { pathname } = document.location;
+    const activeNavElement = document.querySelector(`a[href="${pathname}"]`);
+
+    if (activeNavElement) {
+        activeNavElement.classList.add("active");
+    }
+</script>

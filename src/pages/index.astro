@@ -1,9 +1,10 @@
 ---
 import Main from "../layouts/Main.astro";
 import profile from "../assets/profile.webp";
+import Cards from "../components/Cards.astro";
 ---
 
-<Main>
+<Main title="Frau Katerina">
 	<div class="profile">
 		<img src={profile.src} alt="Profile Picture" class="profile__image" />
 		<div class="profile__details">
@@ -16,6 +17,29 @@ import profile from "../assets/profile.webp";
 			</p>
 		</div>
 	</div>
+
+	<Cards
+		cards={[
+			{
+				to: "/philosophies",
+				title: "Philosophies title and its content",
+				gradientFrom: "#159957",
+				gradientTo: "#155799",
+			},
+			{
+				to: "/beyond-tech",
+				title: "Beyond Tech title and its content",
+				gradientFrom: "#0099f7",
+				gradientTo: "#f11712",
+			},
+			{
+				to: "/work-summary",
+				title: "Go back to work summary",
+				gradientFrom: "#568932",
+				gradientTo: "#152889",
+			},
+		]}
+	/>
 </Main>
 
 <style>
@@ -23,6 +47,7 @@ import profile from "../assets/profile.webp";
 		display: flex;
 		align-items: center;
 		gap: 1rem;
+		margin-bottom: 2rem;
 	}
 
 	.profile__image {

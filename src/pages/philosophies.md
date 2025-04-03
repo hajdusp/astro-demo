@@ -1,5 +1,8 @@
 ---
-layout: ../layouts/Main.astro
+layout: ../layouts/Blog.astro
+title: "Philisophies"
+subtitle: "Philisophies subtitle..."
+poster: "/images/image2.png"
 ---
 
 - Be present and enjoy th now.
