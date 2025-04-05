@@ -11,7 +11,8 @@ type Props = MarkdownLayoutProps<{
 const { title, subtitle, poster } = Astro.props.frontmatter;
 ---
 
-<Main title="Blog">
+<!-- Sanyi: subtitles become descriptions -->
+<Main title={title} description={subtitle}>
     <figure class="figure">
         <img
             src={poster}

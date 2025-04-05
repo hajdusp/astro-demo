@@ -2,9 +2,12 @@
 import Main from "../layouts/Main.astro";
 import profile from "../assets/profile.webp";
 import Cards from "../components/Cards.astro";
+
+// Sanyi: Astro.glob
+const blogs = await Astro.glob("./blogs/*.md");
 ---
 
-<Main title="Frau Katerina">
+<Main title="Frau Katerina" description="Frau Katerina's website">
 	<div class="profile">
 		<img src={profile.src} alt="Profile Picture" class="profile__image" />
 		<div class="profile__details">
@@ -40,25 +43,41 @@ import Cards from "../components/Cards.astro";
 			},
 		]}
 	/>
+
+	<div class="featured-blogs">
+		<h2 class="blogs__title">Featured Blogs</h2>
+		<p class="featured-blogs__description">Featured blogs description.</p>
+	</div>
+
+	<ol class="blogs">
+		<!-- Sanyi: Astro.glob returns an array of objects, so we need to map over it -->
+		{
+			blogs.map((blog) => (
+				<li class="blog-list-item">
+					<a href={blog.url}>{blog.frontmatter.title}</a>
+				</li>
+			))
+		}
+	</ol>
+
+	<style>
+		.profile {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+			margin-bottom: 2rem;
+		}
+
+		.profile__image {
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			object-fit: cover;
+			flex-shrink: 0;
+		}
+
+		h2 {
+			font-weight: normal;
+		}
+	</style>
 </Main>
-
-<style>
-	.profile {
-		display: flex;
-		align-items: center;
-		gap: 1rem;
-		margin-bottom: 2rem;
-	}
-
-	.profile__image {
-		width: 100px;
-		height: 100px;
-		border-radius: 50%;
-		object-fit: cover;
-		flex-shrink: 0;
-	}
-
-	h2 {
-		font-weight: normal;
-	}
-</style>
