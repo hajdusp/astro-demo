@@ -1,6 +1,8 @@
 ---
 import type { MarkdownLayoutProps } from "astro";
 import Main from "./Main.astro";
+import { Image } from "astro:assets";
+const { frontmatter } = Astro.props;
 
 type Props = MarkdownLayoutProps<{
     title: string;
@@ -12,19 +14,21 @@ const { title, subtitle, poster } = Astro.props.frontmatter;
 ---
 
 <!-- Sanyi: subtitles become descriptions -->
-<Main title={title} description={subtitle}>
+<Main title={frontmatter.title} description={frontmatter.subtitle}>
     <figure class="figure">
         <img
-            src={poster}
-            alt={title}
-            width="100%"
-            height="480px"
+            src={frontmatter.poster}
+            alt={frontmatter.title}
+            width="720"
+            height="480"
             class="figure__img"
         />
-        <figcaption class="figure__figcaption">The image of {title}</figcaption>
+        <figcaption class="figure__figcaption">
+            The image of {frontmatter.title}
+        </figcaption>
     </figure>
-    <h1>{title}</h1>
-    <p>{subtitle}</p>
+    <h1>{frontmatter.title}</h1>
+    <p>{frontmatter.subtitle}</p>
     <slot />
 </Main>
 
