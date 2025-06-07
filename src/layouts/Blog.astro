@@ -1,16 +1,6 @@
 ---
-import type { MarkdownLayoutProps } from "astro";
 import Main from "./Main.astro";
-import { Image } from "astro:assets";
 const { frontmatter } = Astro.props;
-
-type Props = MarkdownLayoutProps<{
-    title: string;
-    subtitle: string;
-    poster: string;
-}>;
-
-const { title, subtitle, poster } = Astro.props.frontmatter;
 ---
 
 <!-- Sanyi: subtitles become descriptions -->
