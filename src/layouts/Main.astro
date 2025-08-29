@@ -31,17 +31,17 @@ const { title, description } = Astro.props;
             }
 
             const DARK_THEME_CLASS = "dark";
-            const COLOUR_MODE = "COLUR_MODE";
+            const COLOR_MODE = "COLOR_MODE";
             const LIGHT_THEME = "LIGHT_THEME";
             const DARK_THEME = "DARK_THEME";
 
             const rootEl = document.documentElement;
 
-            const getinitialColourMode = () => {
-                const previousColourMode = localStorage.getItem(COLOUR_MODE);
+            const getInitialColorMode = () => {
+                const previousColorMode = localStorage.getItem(COLOR_MODE);
 
-                if (previousColourMode) {
-                    return previousColourMode;
+                if (previousColorMode) {
+                    return previousColorMode;
                 }
 
                 if (
@@ -54,9 +54,9 @@ const { title, description } = Astro.props;
                 return LIGHT_THEME;
             };
 
-            const initialColourMode = getinitialColourMode();
+            const initialColorMode = getInitialColorMode();
 
-            const setInitialColourMode = (mode) => {
+            const setInitialColorMode = (mode) => {
                 if (mode === LIGHT_THEME) {
                     rootEl.classList.remove(DARK_THEME_CLASS);
                 } else {
@@ -64,7 +64,7 @@ const { title, description } = Astro.props;
                 }
             };
 
-            setInitialColourMode(initialColourMode);
+            setInitialColorMode(initialColorMode);
         </script>
     </head>
     <body>
